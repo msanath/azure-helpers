@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="azure_helpers",
-    version="0.0.2",
+    version="0.0.3",
     author="Sanath Manavarte",
     author_email="msanath@gmail.com",
     description="A package which uses azure SDK for creating simple resources and managing them.",
