@@ -1,0 +1,7 @@
+azure-cli-core
+azure-mgmt-compute==13.0.0
+
+# Development helpers
+mypy
+pytest
+flake8

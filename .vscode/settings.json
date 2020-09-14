@@ -1,0 +1,41 @@
+{
+    "python.pythonPath": "${workspaceFolder}/bin/python3",
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.cwd": "${workspaceFolder}/.",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--config",
+        "${workspaceFolder}/setup.cfg"
+    ],
+    "python.linting.mypyEnabled": false,
+    "python.linting.mypyArgs": [
+        "--config-file",
+        "${workspaceFolder}/setup.cfg"
+    ],
+    "editor.formatOnSave": false,
+    "files.exclude": {
+        ".gradle": true,
+        ".vscode": false,
+        "build/": true,
+        "**/activate": true,
+        "**/mppy-pinned.txt": true,
+        "**/*.egg-info": true,
+        "**/__pycache__": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/*.iml": true,
+        "**/*.ipr": true,
+        "**/*.iws": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.cache": true
+    },
+    "search.exclude": {
+        "build": true
+    },
+}
