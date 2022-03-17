@@ -19,7 +19,7 @@ To extend the package and customize it further, clone it from git and run the fo
 
 > `git clone https://github.com/msanath/azure-helpers.git`\
 > `cd azure-helpers`\
-> `python3 -m venv`\
+> `python3 -m venv .`\
 > `source bin/activate`\
 > `pip install -r requirements.txt`
 
