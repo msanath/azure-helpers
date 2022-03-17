@@ -1,5 +1,7 @@
 azure-cli-core
 azure-mgmt-compute==13.0.0
+azure-servicebus==7.6.0
+azure-identity
 
 # Development helpers
 mypy
