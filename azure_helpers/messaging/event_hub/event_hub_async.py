@@ -21,10 +21,11 @@ class AsyncEventHubHelper:
         eventhub_name: str,
         credential: object,
     ) -> None:
+        self._credential = credential
         self._producer = EventHubProducerClient(
             fully_qualified_namespace=fully_qualified_namespace,
             eventhub_name=eventhub_name,
-            credential=None
+            credential=credential,
         )
         self._consumer = EventHubConsumerClient(
             fully_qualified_namespace=fully_qualified_namespace,
@@ -41,11 +42,11 @@ class AsyncEventHubHelper:
     async def _async_produce(self, message: str) -> None:
         with self._producer:
             try:
-                event_batch = await self._producer.create_batch()
-                event_batch.add(EventData(message))
-                await self._producer.send_batch()
-
-                log.info('Successfully published message: %s', message)
+                async with self._credential:
+                    event_batch = await self._producer.create_batch()
+                    event_batch.add(EventData(message))
+                    await self._producer.send_batch(event_data_batch=event_batch)
+                    log.info('Successfully published message: %s', message)
             except Exception as e:
                 log.error('Failed to produce message. Reason: %s', str(e))
 
@@ -55,8 +56,9 @@ class AsyncEventHubHelper:
         loop.run_until_complete(self._asnyc_consume_message())
 
     async def _asnyc_consume_message(self) -> str:
-        async with self._consumer:
+        async with self._credential:
             await self._consumer.receive(on_event=self._on_event, )
 
     async def _on_event(self, partition_context, event: EventData):
         log.info("Received message: %s", event)
+        await partition_context.update_checkpoint(event)

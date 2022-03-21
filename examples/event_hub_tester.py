@@ -4,7 +4,7 @@ from random import randrange
 from time import sleep
 
 from azure_helpers.messaging.event_hub import AsyncEventHubHelper
-from azure.identity import ManagedIdentityCredential
+from azure.identity.aio import ManagedIdentityCredential
 
 log = logging.getLogger(__name__)
 
