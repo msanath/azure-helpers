@@ -29,7 +29,8 @@ class AsyncEventHubHelper:
         self._consumer = EventHubConsumerClient(
             fully_qualified_namespace=fully_qualified_namespace,
             eventhub_name=eventhub_name,
-            credential=credential
+            credential=credential,
+            consumer_group='consumer-1',
         )
 
     def produce_message(self, message: str) -> None:

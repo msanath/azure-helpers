@@ -20,7 +20,7 @@ class ServiceBusHelper:
 
     def produce_message(self, message: str) -> None:
         """Produce a message to the service bus."""
-        sb_message = ServiceBusMessage(message=message)
+        sb_message = ServiceBusMessage(body=message)
         with self._producer:
             try:
                 self._producer.send_messages(sb_message)
